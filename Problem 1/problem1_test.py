@@ -7,6 +7,7 @@ import unittest
 from ast import literal_eval
 import numpy as np
 
+MAX_MAtrix_SIZE = 300
 
 def zombieCluster(matrix):
     #write your zombieCluster here
@@ -23,6 +24,8 @@ def zombieCluster(matrix):
         return result
 
     (nLine,nCol) = np.shape(matrix)
+    if nLine > MAX_MAtrix_SIZE:
+        return 0
     lineIdx = 0
     nClusters = 0
     clusters_elements = []
