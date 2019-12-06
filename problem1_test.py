@@ -5,12 +5,28 @@ script from that folder if your want to test automatically if your function is c
 """
 import unittest
 from ast import literal_eval
+import numpy as np
 
 
 def zombieCluster(matrix):
     #write your zombieCluster here
     #your function should return an int to be tested
-    return 1
+    def searchConnectedZombies(matrix, lineIndex):
+        print('Hello!')
+        
+    (nLine,nCol) = np.shape(matrix)
+    lineIdx = 0
+    nClusters = 0
+    while lineIdx < nLine:
+        nClusters +=1
+        clusters_elements = []
+        for colIdx in range(nCol):
+            if (matrix[lineIdx][colIdx] == 1) and (colIdx != colIdx): # make an exception for the diagonal elements
+                clusters_elements = list(set(clusters_elements + searchConnectedZombies(matrix, lineIdx)))
+        # search of an element not included in any cluster
+        while(lineIdx in clusters_elements):
+            lineIdx +=1
+    return nClusters
 
 class test_problem(unittest.TestCase):
     """
